@@ -1,0 +1,39 @@
+@(samochodForm: Form[Samochod])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Dodaj samochód</h1>
+    
+    @form(routes.Application.save()) {
+        
+        <fieldset>
+        
+            @inputText(samochodForm("marka"), '_label -> "Marka samochodu")
+            @inputText(samochodForm("model"), '_label -> "Model samochodu")
+            @inputText(samochodForm("numRej"), '_label -> "Numer rejestracyjny samochodu")
+            @inputText(samochodForm("dataProdukcji"), '_label -> "Data produkcji")
+            @inputText(samochodForm("przeglad"), '_label -> "Data ważności przeglądu", 'class -> "datepicker")
+            @inputText(samochodForm("ubezpieczenie"), '_label -> "Data ważności ubezpieczenia", 'class -> "datepicker")
+
+            @select(
+                samochodForm("typ"), 
+                options(Seq("Osobowy", "Autobus", "Ciężarowy")), 
+                '_label -> "Typ", '_default -> "-- Wybierz typ --",
+                '_showConstraints -> false
+            )
+            
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Dodaj samochód" class="btn primary"> lub 
+            <a href="@routes.Application.list()" class="btn">Anuluj</a> 
+        </div>
+        
+    }
+    
+}

@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//app/views/createForm.scala.html=UTF-8
+encoding//app/views/editForm.scala.html=UTF-8
+encoding//app/views/list.scala.html=UTF-8
 encoding/<project>=UTF-8
