@@ -11,7 +11,7 @@ import views.html.*;
 import models.*;
 
 /**
- * Manage a database of computers
+ * Manage a database
  */
 public class Application extends Controller {
     
@@ -30,7 +30,7 @@ public class Application extends Controller {
     }
 
     /**
-     * Display the paginated list of computers.
+     * Display the paginated list.
      *
      * @param page Current page number (starts from 0)
      * @param sortBy Column to be sorted
@@ -47,36 +47,36 @@ public class Application extends Controller {
     }
     
     /**
-     * Display the 'edit form' of a existing Computer.
+     * Display the 'edit form' of a existing.
      *
-     * @param id Id of the computer to edit
+     * @param id Id to edit
      */
     public static Result edit(Long id) {
-        Form<Samochod> computerForm = form(Samochod.class).fill(
+        Form<Samochod> samochodForm = form(Samochod.class).fill(
         		Samochod.find.byId(id)
         );
         return ok(
-            editForm.render(id, computerForm)
+            editForm.render(id, samochodForm)
         );
     }
     
     /**
      * Handle the 'edit form' submission 
      *
-     * @param id Id of the computer to edit
+     * @param id Id to edit
      */
     public static Result update(Long id) {
-        Form<Samochod> computerForm = form(Samochod.class).bindFromRequest();
-        if(computerForm.hasErrors()) {
-            return badRequest(editForm.render(id, computerForm));
+        Form<Samochod> samochodForm = form(Samochod.class).bindFromRequest();
+        if(samochodForm.hasErrors()) {
+            return badRequest(editForm.render(id, samochodForm));
         }
-        computerForm.get().update(id);
-        flash("success", "Samochod " + computerForm.get().marka + " został zaktualizowany");
+        samochodForm.get().update(id);
+        flash("success", "Samochod " + samochodForm.get().marka + " został zaktualizowany");
         return GO_HOME;
     }
     
     /**
-     * Display the 'new computer form'.
+     * Display the 'new form'.
      */
     public static Result create() {
         Form<Samochod> samochodForm = form(Samochod.class);
@@ -86,7 +86,7 @@ public class Application extends Controller {
     }
     
     /**
-     * Handle the 'new computer form' submission 
+     * Handle the 'new form' submission 
      */
     public static Result save() {
         Form<Samochod> samochodForm = form(Samochod.class).bindFromRequest();
@@ -99,7 +99,7 @@ public class Application extends Controller {
     }
     
     /**
-     * Handle computer deletion
+     * Handle deletion
      */
     public static Result delete(Long id) {
     	Samochod.find.ref(id).delete();

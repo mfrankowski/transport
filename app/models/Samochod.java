@@ -39,16 +39,16 @@ public class Samochod extends Model {
     public Date ubezpieczenie;
     
     /**
-     * Generic query helper for entity Computer with id Long
+     * Generic query helper for entity with id Long
      */
     public static Finder<Long,Samochod> find = new Finder<Long,Samochod>(Long.class, Samochod.class); 
     
     /**
-     * Return a page of computer
+     * Return a page
      *
      * @param page Page to display
-     * @param pageSize Number of computers per page
-     * @param sortBy Computer property used for sorting
+     * @param pageSize Number per page
+     * @param sortBy property used for sorting
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
      */

@@ -30,13 +30,11 @@
         
         <div class="actions">
             <input type="submit" value="Zapisz samochód" class="btn primary"> lub 
-            <a href="@routes.Application.list()" class="btn">Anuluj</a> 
-        </div>
-        
+            <a href="@routes.Application.list()" class="btn">Anuluj</a>       
     }
     
-    @form(routes.Application.delete(id), 'class -> "topRight") {
+    @form(routes.Application.delete(id), 'class -> "delete") {
         <input type="submit" value="Usuń samochód" class="btn danger">
     }
-    
+    </div>
 }
